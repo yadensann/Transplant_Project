@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Survival Rate</title>
+</head>
+    <body>
+        <form action="{{ url_for('Survival') }}" method="POST">
+            <fieldset>
+                <legend>Input values:</legend>
+                Organ Type:
+                <input name="organ" type="organ type" required>
+                <br>
+                <br> Donor Type:
+                <input name="donor type" type="cadaveric or living" required>
+                <br>
+                <br> State Abbreviation of Medical Center:
+                <input name="state" type="state abbreviation" required>
+                <br>
+                <br>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <br>
+        <div class="result" align="center">
+            {% if result %}
+                {% for variable, value in original_input.items() %}
+                    <b>{{ variable }}</b> : {{ value }}
+                {% endfor %}
+                <br>
+                <br> Predicted survival rate:
+                   <p style="font-size:50px">{{ result }}</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
