@@ -1,19 +1,12 @@
-<!doctype html>
-<html>
-<style>
-form {
-    margin: auto;
-    width: 35%;
-}
-.result {
-    margin: auto;
-    width: 35%;
-    border: 1px solid #ccc;
-}
-</style>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
     <title>Survival Rate</title>
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Site1/stylesheet.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
     <body>
         <form action="{{ url_for('Survival') }}" method="POST">
             <fieldset>
@@ -24,7 +17,7 @@ form {
                 <br> Donor Type:
                 <input name="donor type" type="cadaveric or living" required>
                 <br>
-                <br> State Abbreviation of Medical Center:
+                <br> State Abbreviation:
                 <input name="state" type="state abbreviation" required>
                 <br>
                 <br>
@@ -33,14 +26,16 @@ form {
         </form>
         <br>
         <div class="result" align="center">
-            {% if result %}
-                {% for variable, value in original_input.items() %}
-                    <b>{{ variable }}</b> : {{ value }}
-                {% endfor %}
-                <br>
-                <br> Predicted survival rate:
-                   <p style="font-size:50px">{{ result }}</p>
-            {% endif %}
+            <ul>
+                {% if result %}
+                    {% for variable, value in original_input.items() %}
+                        <b>{{ variable }}</b> : {{ value }}
+                    {% endfor %}
+                    <br>
+                    <br> Predicted survival rate:
+                    <!-- <p style= font-size:50px > {{ result }}</p> -->
+                {% endif %}
+            </ul>
         </div>
     </body>
 </html>

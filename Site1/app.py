@@ -19,13 +19,13 @@ def main():
         
         input_variabes= pd.DataFrame([[organ, organ_type, state]],
                             columns=['Organ', 'Donor_Type, State Abv'],
-                            dtype= float)
+                            dtype= object)
         prediction= model.predict(input_variables)[0]
         
         return flask.render_template('Survival.html',
-                                    original_input= {'Temperature': temperature,
-                                                      'Humidity': humidity,
-                                                      'Windspeed': windspeed},
+                                    original_input= {'Organ': organ,
+                                                      'Donor Type': donor_type,
+                                                      'State Abbreviation': state},
                                     result= prediction)
         
 
